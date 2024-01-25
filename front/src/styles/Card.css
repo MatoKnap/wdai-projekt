@@ -1,0 +1,16 @@
+/* Card.css */
+.card-container {
+    width: 250px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    text-align: left;
+  }
+  
+  .card-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  

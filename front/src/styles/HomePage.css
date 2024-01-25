@@ -1,0 +1,40 @@
+/* HomePage.css */
+.app {
+  padding: 20px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+}
+
+.filters input {
+  margin-right: 10px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.advertisement-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* Dodaj odpowiednie style dla listy ogłoszeń */
+}
+
+.advertisement-list a {
+  margin: 10px;
+  /* Dodaj odpowiednie style dla linku do dodawania ogłoszenia */
+}
