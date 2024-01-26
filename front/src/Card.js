@@ -4,6 +4,7 @@ import './styles/Card.css';
 
 const Card = ({ advertisement }) => {
   const [imageSrc, setImageSrc] = useState(null);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     if (advertisement.image instanceof File) {
@@ -20,12 +21,31 @@ const Card = ({ advertisement }) => {
   }, [advertisement.image]);
 
   return (
-    <div className="card-container">
+    <>
+    <div
+      className={"card-container"
+                + (isActive ? "-active" : "")
+                + (advertisement.important === true ? " important" : "")}
+      onClick={() => {if (!isActive) setIsActive(true)}}
+    >
       {imageSrc && <img src={imageSrc} alt={advertisement.title} />}
-      <h3>{advertisement.title}</h3>
-      <p>{advertisement.description}</p>
-      <p>{advertisement.date}</p>
+      <div className="text-container">
+        <h3>{advertisement.title}</h3>
+        <p className={"description" + (isActive ? "-active" : "")}>{advertisement.description}</p>
+        <p>{advertisement.date}</p>
+      </div>
+      <div
+        className="close"
+        style={isActive ? {display: "block"} : {}}
+        onClick={() => setIsActive(false)}
+      >X</div>
     </div>
+    <div
+      className="shadow"
+      style={isActive ? {display: "block"} : {}}
+      onClick={() => setIsActive(false)}
+    ></div>
+    </>
   );
 };
 

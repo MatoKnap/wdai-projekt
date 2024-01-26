@@ -34,13 +34,17 @@ const HomePage = ({ advertisements }) => {
       {/* Filtry daty */}
       <div className="menu">
         <div className="filters">
+          <label htmlFor="od">Szukam ogłoszeń między</label>
           <input
+            id="od"
             type="date"
             placeholder="Od"
             value={filterDateFrom}
             onChange={(e) => setFilterDateFrom(e.target.value)}
           />
+          <label htmlFor="do">a</label>
           <input
+            id="do"
             type="date"
             placeholder="Do"
             value={filterDateTo}

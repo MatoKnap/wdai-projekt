@@ -11,17 +11,30 @@ const App = () => {
   const [advertisements, setAdvertisements] = useState([
     {
       id: 1,
-      title: 'Ogłoszenie 1',
+      title: 'Ogłoszenie wyróżnione',
       description: 'Opis ogłoszenia 1...',
       date: '2024-01-25',
       image: mockImage,
+      important: true
     },
     {
       id: 2,
-      title: 'Ogłoszenie 2',
+      title: 'Ogłoszenie zwykłe',
       description: 'Opis ogłoszenia 2...',
       date: '2024-01-26',
       image: mockImage,
+      important: false
+    },
+    {
+      id: 3,
+      title: 'Ogłoszenie z bardzo długim opisem i obrazkiem',
+      description: 'Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. \
+                    Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi.\
+                    Ekhm... Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam. \
+                    I co ciekawe, to właśnie przypadkowe spotkania wpływają na nasze życie.',
+      date: '2024-01-26',
+      image: "https://code.oursky.com/wp-content/uploads/2015/11/full-text-message-ios.gif",
+      important: false
     },
   ]);
 
