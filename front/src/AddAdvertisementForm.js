@@ -16,6 +16,19 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
   const [validationError, setValidationError] = useState(null);
   const navigate = useNavigate();
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    // Image preview logic
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImageSrc(e.target.result);
+    };
+    reader.readAsDataURL(file);
+
+    setNewAdvertisement({ ...newAdvertisement, image: file });
+  };
+
   const handleAddAdvertisement = async () => {
     // Walidacja formularza
     if (!newAdvertisement.title.trim()) {
@@ -56,17 +69,7 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
   
   
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setNewAdvertisement({ ...newAdvertisement, image: file });
-
-    // Image preview logic
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setImageSrc(e.target.result);
-    };
-    reader.readAsDataURL(file);
-  };
+  
 
   return (
     <div className="form-container">
