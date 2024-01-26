@@ -49,12 +49,40 @@ let advertisements = [
     title: 'Ogłoszenie z bardzo długim opisem i obrazkiem',
     description:
       'Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm... Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam. I co ciekawe, to właśnie przypadkowe spotkania wpływają na nasze życie.',
-    date: '2024-01-26',
+    date: '2024-01-28',
     image:
     'https://code.oursky.com/wp-content/uploads/2015/11/full-text-message-ios.gif', // Zaktualizowano link do obrazu
     important: false,
   },
 ];
+
+// Mockowane dane użytkowników
+let users = [
+  {
+    id: 1,
+    login: 'dziekan',
+    password: 'supersecret123',
+    vip: true,
+  },
+  {
+    id: 2,
+    login: 'student',
+    password: 'panda3',
+    vip: false,
+  },
+  {
+    id: 3,
+    login: 'doktor',
+    password: 'kochamAGH<3',
+    vip: false,
+  },
+];
+
+// Obsługa wysyłania listy użytkowników
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
 // Obsługa wysyłania listy ogłoszeń
 app.get('/advertisements', (req, res) => {
   res.json(advertisements);

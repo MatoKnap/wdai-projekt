@@ -46,7 +46,7 @@
   background-image: linear-gradient(to right, transparent, var(--card-background) 80%);
   position: absolute;
   inset-inline-end: 0;
-  top: calc(6em * .93);
+  top: calc(6em * .9);
   height: 1.2em;
   width: 100%;
   pointer-events: none;
