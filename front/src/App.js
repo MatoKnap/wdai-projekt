@@ -11,7 +11,7 @@ const App = () => {
   const [advertisements, setAdvertisements] = useState([
     {
       id: 1,
-      title: 'Ogłosznie wyróżnione',
+      title: 'Ogłoszenie wyróżnione',
       description: 'Opis ogłoszenia 1...',
       date: '2024-01-25',
       image: mockImage,
