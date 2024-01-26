@@ -9,9 +9,11 @@ const Card = ({ advertisement }) => {
     if (typeof advertisement.image === 'string') {
       setImageSrc(advertisement.image);
     }
+    console.log(advertisement.image)
     const base64Image = arrayBufferToBase64(advertisement.image);
     console.log(base64Image)
     setImageSrc(`data:image/jpeg;base64, ${base64Image}`);
+
 
   }, [advertisement.image]);
 

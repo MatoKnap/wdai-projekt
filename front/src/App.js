@@ -16,7 +16,6 @@ const App = () => {
       .then((data) => setAdvertisements(data))
       .catch((error) => console.error('Błąd podczas pobierania ogłoszeń:', error));
     
-    // Pobierz listę użytkowników
     fetch('http://localhost:3001/users')
       .then((response) => response.json())
       .then((data) => setUsers(data))
