@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './styles/AddAdvertisementForm.css';
 
-const AddAdvertisementForm = ({ onAddAdvertisement }) => {
+const AddAdvertisementForm = ({ onAddAdvertisement, loggedInUser }) => {
   const [newAdvertisement, setNewAdvertisement] = useState({
     title: '',
     description: '',
@@ -62,7 +62,7 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
     }
   };
 
-  return (
+  return loggedInUser != null ? (
     <div className="form-container">
       {validationError && <p style={{ color: 'red' }}>{validationError}</p>}
 
@@ -95,6 +95,11 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
       <input type="file" onChange={handleImageChange} accept="image/*" />
       {imageSrc && <img src={imageSrc} alt="Preview" style={{ maxWidth: '100%' }} />}
       <button onClick={handleAddAdvertisement}>Dodaj ogłoszenie</button>
+    </div>
+  ) : (
+    <div className="alert">
+      <h2>Dostępne tylko dla zalogowanych!</h2>
+      <Link to="/login" className="login-button">Zaloguj się</Link>
     </div>
   );
 };
