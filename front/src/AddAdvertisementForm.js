@@ -1,4 +1,3 @@
-// AddAdvertisementForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/AddAdvertisementForm.css';
@@ -19,7 +18,6 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
 
-    // Image preview logic
     const reader = new FileReader();
     reader.onload = (e) => {
       setImageSrc(e.target.result);
@@ -30,7 +28,6 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
   };
 
   const handleAddAdvertisement = async () => {
-    // Walidacja formularza
     if (!newAdvertisement.title.trim()) {
       setValidationError('Tytuł nie może być pusty.');
       return;
@@ -47,7 +44,6 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
     }
   
     try {
-      // Pass the newAdvertisement object directly
       await onAddAdvertisement(newAdvertisement);
   
       setNewAdvertisement({
@@ -60,16 +56,11 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
       setImageSrc(null);
       setValidationError(null);
   
-      // Przekieruj na stronę główną po dodaniu ogłoszenia
       navigate('/');
     } catch (error) {
       console.error('Błąd podczas dodawania ogłoszenia:', error);
     }
   };
-  
-  
-
-  
 
   return (
     <div className="form-container">

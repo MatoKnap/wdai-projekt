@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
@@ -9,7 +8,6 @@ const App = () => {
   const [advertisements, setAdvertisements] = useState([]);
 
   useEffect(() => {
-    // Pobierz listę ogłoszeń po załadowaniu komponentu
     fetch('http://localhost:3001/advertisements')
       .then((response) => response.json())
       .then((data) => setAdvertisements(data))
@@ -21,8 +19,8 @@ const App = () => {
     formData.append('title', newAdvertisement.title);
     formData.append('description', newAdvertisement.description);
     formData.append('date', newAdvertisement.date);
+    formData.append('important', false);
   
-    // Sprawdź, czy obraz istnieje, zanim go dołączysz
     if (newAdvertisement.image) {
       formData.append('image', newAdvertisement.image);
     }

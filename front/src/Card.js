@@ -1,4 +1,3 @@
-// Card.js
 import React, { useState, useEffect } from 'react';
 import './styles/Card.css';
 
@@ -7,44 +6,50 @@ const Card = ({ advertisement }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (advertisement.image instanceof File) {
-      // If it's a File object, read as data URL
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImageSrc(e.target.result);
-      };
-      reader.readAsDataURL(advertisement.image);
-    } else if (typeof advertisement.image === 'string') {
-      // If it's a string, assume it's a static URL
+    if (typeof advertisement.image === 'string') {
       setImageSrc(advertisement.image);
     }
+    const base64Image = arrayBufferToBase64(advertisement.image);
+    console.log(base64Image)
+    setImageSrc(`data:image/jpeg;base64, ${base64Image}`);
+
   }, [advertisement.image]);
+
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer.data);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
+  };
 
   return (
     <>
-    <div
-      className={"card-container"
-                + (isActive ? "-active" : "")
-                + (advertisement.important === true ? " important" : "")}
-      onClick={() => {if (!isActive) setIsActive(true)}}
-    >
-      {imageSrc && <img src={imageSrc} alt={advertisement.title} />}
-      <div className="text-container">
-        <h3>{advertisement.title}</h3>
-        <p className={"description" + (isActive ? "-active" : "")}>{advertisement.description}</p>
-        <p>{advertisement.date}</p>
+      <div
+        className={"card-container"
+          + (isActive ? "-active" : "")
+          + (advertisement.important === true ? " important" : "")}
+        onClick={() => { if (!isActive) setIsActive(true) }}
+      >
+        {imageSrc && <img src={imageSrc} alt={advertisement.title} />}
+        <div className="text-container">
+          <h3>{advertisement.title}</h3>
+          <p className={"description" + (isActive ? "-active" : "")}>{advertisement.description}</p>
+          <p>{advertisement.date}</p>
+        </div>
+        <div
+          className="close"
+          style={isActive ? { display: "block" } : {}}
+          onClick={() => setIsActive(false)}
+        >X</div>
       </div>
       <div
-        className="close"
-        style={isActive ? {display: "block"} : {}}
+        className="shadow"
+        style={isActive ? { display: "block" } : {}}
         onClick={() => setIsActive(false)}
-      >X</div>
-    </div>
-    <div
-      className="shadow"
-      style={isActive ? {display: "block"} : {}}
-      onClick={() => setIsActive(false)}
-    ></div>
+      ></div>
     </>
   );
 };
