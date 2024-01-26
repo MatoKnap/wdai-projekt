@@ -9,6 +9,7 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
     description: '',
     date: '',
     image: null,
+    important: false
   });
 
   const [imageSrc, setImageSrc] = useState(null);
@@ -41,6 +42,7 @@ const AddAdvertisementForm = ({ onAddAdvertisement }) => {
         description: '',
         date: '',
         image: null,
+        important: false
       });
       setImageSrc(null);
       setValidationError(null);

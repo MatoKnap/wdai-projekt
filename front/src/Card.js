@@ -20,10 +20,10 @@ const Card = ({ advertisement }) => {
   }, [advertisement.image]);
 
   return (
-    <div className="card-container">
+    <div className={"card-container" + (advertisement.important == false ? "" : " important")}>
       {imageSrc && <img src={imageSrc} alt={advertisement.title} />}
       <h3>{advertisement.title}</h3>
-      <p>{advertisement.description}</p>
+      <p className="description">{advertisement.description}</p>
       <p>{advertisement.date}</p>
     </div>
   );

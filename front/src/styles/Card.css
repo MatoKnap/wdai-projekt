@@ -1,16 +1,51 @@
 /* Card.css */
+
+:root {
+  --card-background: #1F2833;
+}
+
 .card-container {
     width: 250px;
-    background-color: #f0f0f0;
+    background-color: var(--card-background);
     border-radius: 10px;
     padding: 15px;
     margin: 10px;
     text-align: left;
-  }
+    transition: all .5s;
+}
+
+.important {
+  border: 2px dotted red;
+}
+
+.card-container:hover {
+  box-shadow: 0 0 10px 7px black;
+  transform: scale(1.1);
+}
   
-  .card-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
+.card-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 250px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.description {
+  max-height: calc(7em * .95);
+  overflow: hidden;
+  position: relative;
+}
+
+.description::after {
+  content: "";
+  display: block;
+  background-image: linear-gradient(to right, transparent, var(--card-background) 80%);
+  position: absolute;
+  inset-inline-end: 0;
+  top: calc(6em * .93);
+  height: 1.2em;
+  width: 100%;
+  pointer-events: none;
+}
